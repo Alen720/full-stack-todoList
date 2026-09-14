@@ -1,0 +1,21 @@
+# Python / Virtual Environment
+server/venv/
+server/.venv/
+server/__pycache__/
+server/*.py[cod]
+server/*$py.class
+
+# Database
+server/*.db
+server/*.sqlite3
+
+# Node / React
+client/node_modules/
+client/build/
+client/dist/
+
+# Logs & OS / Editor junk
+*.log
+npm-debug.log*
+.DS_Store
+.vscode/

@@ -16,6 +16,36 @@ function App() {
     .then((data) => setText(data))
   }
 
+  function createTodo(text) {
+    fetch(`${API}/todos`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        text: text
+      })
+    }).then(() => getTodos())
+  }
+
+  function toggleCheck(id, checked) {
+    fetch(`${API}/todos/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        "Checked": checked
+      })
+    }).then(() => getTodos())
+  }
+
+  function deleteTodo(id) {
+    fetch(`${API}/todos/${id}`, {
+      method: "DELETE"
+    }).then(() => getTodos())
+  }
+
   useEffect(() => {
     getTodos()
   })

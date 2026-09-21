@@ -5,3 +5,11 @@ class CreateTodo(BaseModel):
 
 class UpdateTodo(BaseModel):
     checked: bool
+
+class TodoResponse(BaseModel):
+    id: int
+    text: str
+    checked: bool
+
+    class config:
+        from_attributes = True

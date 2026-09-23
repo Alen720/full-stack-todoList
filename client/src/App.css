@@ -1,0 +1,158 @@
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 4rem;
+}
+
+.App {
+  width: 100%;
+  max-width: 480px;
+  padding: 0 1rem;
+}
+
+/* Внешний карточный контейнер */
+.App > .content {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Форма с инпутом */
+form input[name="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input[name="text"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+form input[name="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+/* Вложенный .content — список тасок */
+.content .content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* Элемент списка */
+.content .content label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.content .content label:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: #475569;
+}
+
+/* Чекбокс */
+.content .content input[type="checkbox"] {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid var(--text-muted);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.content .content input[type="checkbox"]:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.content .content input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Текст таски */
+.content .content span {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  word-break: break-word;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.content .content input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Кнопка удаления */
+.content .content button {
+  background-color: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.content .content button:hover {
+  background-color: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
